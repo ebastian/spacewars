@@ -1,0 +1,29 @@
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  background-color:#000;
+}
+
+.btn {
+  width: 35px;
+  height: 20px;
+  left: 0px;
+  top: 0px;
+  color: #DDDDDD;
+  background-color: #006600;
+  text-align: center;
+  vertical-align: middle;
+  position: absolute;
+  cursor: pointer;
+}
+
+.console {
+  left: 40px;
+  right: 40px;
+  height: 20px;
+  top: 0px;
+  background-color: #BBBBBB;
+  position: absolute;
+}
