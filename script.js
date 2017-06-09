@@ -34,11 +34,12 @@ init = () => {
 
   var spaceship = createObj({
     id: 'spaceship',
-    width: 30,
+    width: 50,
     height: 50,
     top: h - 55,
     left: 300,
     color: '#0000AA',
+    image: 'spaceship.png',
     a: 3,
     maxX: 20,
     maxY: 20,
@@ -87,7 +88,6 @@ init = () => {
       this.top += this.vY;
     },
     fire: function() {
-      console.log(time);
       createObj({
         id: 'fire' + time,
         width: 4,
@@ -107,6 +107,7 @@ init = () => {
               points += 10;
               killObj(this);
               killObj(e);
+              enemies.splice(enemies.indexOf(e), 1);
               return;
             }
           });
@@ -125,8 +126,9 @@ init = () => {
       enemy = createObj({
         id: 'enemy' + enemies.length,
         color: Math.random() < 0.5 ? '#AA0000' : '#00AA00',
-        width: 20,
-        height: 30,
+        image: 'enemy.png',
+        width: 50,
+        height: 35,
         top: 60 + 60*l,
         leftBase: x,
         left: x,
@@ -160,10 +162,12 @@ init = () => {
   boot({
     id: 'SpaceWars',
     keydown: function(key) {
-      switch(key) {
-        case Keyboard.SPACE:
-          getObj('spaceship').fire();
-          break;
+      if(isRunning()) {
+        switch(key) {
+          case Keyboard.SPACE:
+            getObj('spaceship').fire();
+            break;
+        }
       }
     }
     /*

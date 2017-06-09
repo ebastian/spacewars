@@ -73,8 +73,19 @@ createObj = (obj) => {
   obj.left = obj.left != undefined ? obj.left : (w-obj.width)*0.5;
   obj.top = obj.top != undefined ? obj.top : (h-obj.height)*0.5;
   obj.el.style.position = 'absolute';
-  obj.render = () => {
+
+  if(obj.image !== undefined) {
+    var img = document.createElement("img");
+    img.src = obj.image;
+    img.id = "img_" + obj.id;
+    img.style.width = obj.width + "px";
+    img.style.height = obj.height + "px";
+    obj.el.appendChild(img);
+  } else {
     obj.el.style.backgroundColor = obj.color;
+  }
+
+  obj.render = () => {
     obj.el.style.width = obj.width + 'px';
     obj.el.style.height = obj.height + 'px';
     obj.el.style.top = obj.top + 'px';
